@@ -1,0 +1,27 @@
+/* left aligned grid */
+
+.grid {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.item {
+  aspect-ratio: 1;
+}
+
+/* extra visualization styles */
+
+body {
+  background: rgb(224, 224, 255);
+}
+
+.grid {
+  width: 500px;
+  height: auto;
+  background: rgb(188, 255, 191);
+}
+
+.item {
+  background: rgb(255, 198, 188);
+}
