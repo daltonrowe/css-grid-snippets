@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <style>
+      #app {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        gap: 30px;
+      }
+
+      #grid-outer {
+        width: 800px;
+        height: 800px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: yellow;
+      }
+
+      #grid {
+        background: pink;
+
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+      }
+
+      .grid-item {
+        width: 70px;
+        height: 70px;
+        background: lightblue;
+        margin-right: 10px;
+
+        &:nth-of-type(3n) {
+          background-color: green;
+          margin-right: 0;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        &:nth-last-of-type(n + 4) {
+          margin-bottom: 10px;
+        }
+      }
+
+      #trash {
+        background-color: lightgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div>Repeating left aligned grid, that centers single items</div>
+
+      <div id="buttons">
+        <button id="add">Add</button>
+        <button id="remove">Remove</button>
+      </div>
+
+      <div id="grid-outer">
+        <div id="grid">
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div class="grid-item"></div>
+          <div id="trash" class="grid-item"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const grid = document.querySelector("#grid");
+      const add = document.querySelector("#add");
+      const remove = document.querySelector("#remove");
+
+      add.addEventListener("click", () => {
+        const newItem = document.createElement("DIV");
+        newItem.classList.add("grid-item");
+
+        grid.prepend(newItem);
+      });
+
+      remove.addEventListener("click", () => {
+        const firstItem = grid.querySelector(".grid-item");
+        if (firstItem.id !== "trash") firstItem.remove();
+      });
+    </script>
+  </body>
+</html>
